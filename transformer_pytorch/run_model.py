@@ -129,3 +129,18 @@ class LabelSmoothing(nn.Module):
             true_dist.index_fill_(0, mask.squeeze(), 0.0)
         self.true_dist = true_dist
         return self.criterion(x, Variable(true_dist, requires_grad=False))
+
+
+
+if __name__ == '__main__':
+    # Test Batch
+    src = torch.from_numpy(np.random.randint(1, 11, size=(5,10)))
+    btc = Batch(src,src,0)
+    src_mask = btc.src_mask
+    tgt_mask = btc.trg_mask
+    print('Source size:', src.shape)
+    #print(src)
+    print('Source mask size:', src_mask.shape)
+    #print(src_mask)
+    print('Target mask size:', tgt_mask.shape)
+    #print(tgt_mask)

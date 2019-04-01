@@ -12,3 +12,6 @@ There is a simple test for our model. Try to use _Simple\_example.py_.
 There are some problems about the type of tensors which makes the codes raise Error. I'll fix them as soon as possible. My apology for these mistakes. 
 <br><br>
 If you want just know how to build the Transformer, I think these codes are still useful. 
+
+\-\-Update\-\-<br>
+I have fixed some little problems. Now we can implement _Simple\_example.py_ successfully.

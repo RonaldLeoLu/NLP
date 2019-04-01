@@ -11,7 +11,7 @@ from run_model import *
 def data_gen(V, batch, nbatches):
     "Generate random data for a src-tgt copy task."
     for i in range(nbatches):
-        data = torch.from_numpy(np.random.randint(1, V, size=(batch, 10)))
+        data = torch.from_numpy(np.random.randint(1, V, size=(batch, 10))).long()
         data[:, 0] = 1
         src = Variable(data, requires_grad=False)
         tgt = Variable(data, requires_grad=False)
@@ -31,10 +31,12 @@ class SimpleLossCompute:
         loss = self.criterion(x.contiguous().view(-1, x.size(-1)), 
                               y.contiguous().view(-1)) / norm
         loss.backward()
+        #print('Loss:',loss.data.numpy())
+        #print('Type loss:', type(loss))
         if self.opt is not None:
             self.opt.step()
             self.opt.optimizer.zero_grad()
-        return loss.data[0] * norm
+        return loss.data * norm
 
 # This code predicts a translation using greedy decoding for simplicity.
 
